@@ -1,0 +1,7 @@
+{{ define "Form" }}
+<h1>Editing {{ .Title }}</h1>
+    <form action="/list" method="POST">
+        <textarea name="body" rows="20" cols="80">{{printf "%s" .Body}}</textarea><br/>
+        <input type="submit" value="Save"/>
+     </form>
+{{ end }}

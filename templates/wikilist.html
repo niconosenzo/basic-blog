@@ -1,0 +1,12 @@
+{{ define "List" }}
+{{ template "Menu" }}
+
+<table>
+{{ range . }}
+<tr>
+<td>{{ grtxt .Name }}</td>
+<td><a href="/edit/{{grtxt .Name}}">[edit]</td>
+</tr>
+{{ end }}
+</table>
+{{ end }}
