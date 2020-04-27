@@ -1,11 +1,12 @@
 {{ define "List" }}
+{{ template "Header" }}
 {{ template "Menu" }}
 
 <table>
 {{ range . }}
 <tr>
-<td>{{ grtxt .Name }}</td>
-<td><a href="/edit/{{grtxt .Name}}">[edit]</td>
+<td>{{ .Title }}</td>
+<td><a href="/edit/{{.ID}}">[edit]</td>
 </tr>
 {{ end }}
 </table>
