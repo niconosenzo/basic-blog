@@ -17,16 +17,16 @@ type session struct {
 
 func getUser(w http.ResponseWriter, r *http.Request) User {
 	// get cookie
-	c, err := r.Cookie("access_token")
+	c, err := r.Cookie("blogcookie")
 	if err != nil {
 		sID, _ := uuid.NewV4()
 		c = &http.Cookie{
-			Name:  "access_token",
+			Name:  "blogcookie",
 			Value: sID.String(),
 		}
 
 	}
-	c.MaxAge = sessionLength
+	//c.MaxAge = sessionLength
 	http.SetCookie(w, c)
 
 	// if the user exists already, get user

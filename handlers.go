@@ -35,7 +35,7 @@ func signupHandler(w http.ResponseWriter, r *http.Request) {
 		// create session
 		// sID, _ := uuid.NewV4()
 		// c := &http.Cookie{
-		// 	Name:  "access_token",
+		// 	Name:  "blogcookie",
 		// 	Value: sID.String(),
 		// 	Path:  "/",
 		// }
@@ -86,7 +86,7 @@ func loginHandler(w http.ResponseWriter, r *http.Request) {
 		// create session
 		sID, _ := uuid.NewV4()
 		c := &http.Cookie{
-			Name:  "access_token",
+			Name:  "blogcookie",
 			Value: sID.String(),
 			Path:  "/",
 		}
@@ -138,7 +138,7 @@ func logout(w http.ResponseWriter, req *http.Request) {
 		http.Redirect(w, req, "/login", http.StatusSeeOther)
 		return
 	}
-	c, _ := req.Cookie("access_token")
+	c, _ := req.Cookie("blogcookie")
 	// delete the session
 	delete(dbSessions, c.Value)
 	c.MaxAge = -1
@@ -158,7 +158,7 @@ func listHandler(w http.ResponseWriter, r *http.Request) {
 	//u := getUser(w, r)
 	if !alreadyLoggedIn(w, r) {
 		fmt.Println("redirecting you")
-		fmt.Println(r.Cookie("access_token"))
+		fmt.Println(r.Cookie("blogcookie"))
 		http.Redirect(w, r, "/login", http.StatusSeeOther)
 		return
 	}
