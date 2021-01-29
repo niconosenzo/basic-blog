@@ -162,6 +162,12 @@ func listHandler(w http.ResponseWriter, r *http.Request) {
 	// 	http.Redirect(w, r, "/login", http.StatusSeeOther)
 	// 	return
 	// }
+	if !alreadyLoggedIn(w, r) {
+		fmt.Println("redirecting you")
+		fmt.Println(r.Cookie("blogcookie"))
+		http.Redirect(w, r, "/login", http.StatusSeeOther)
+		return
+	}
 
 	pages, err := listArticles()
 	if err != nil {

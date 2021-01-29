@@ -38,6 +38,7 @@ func main() {
 	rtr.HandleFunc("/list/", listHandler)
 	rtr.HandleFunc("/signup/", signupHandler)
 	rtr.HandleFunc("/login/", loginHandler)
+	rtr.HandleFunc("/api/", apiHandler)
 	http.Handle("/", rtr)
 	log.Fatal(http.ListenAndServe(":8080", nil))
 
