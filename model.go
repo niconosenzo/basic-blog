@@ -1,7 +1,6 @@
 package main
 
 import (
-	"database/sql"
 	"log"
 	"strconv"
 
@@ -28,18 +27,6 @@ type Article struct {
 	ID    int
 	Title string
 	Body  string
-}
-
-func dbConn() (db *sql.DB) {
-	dbDriver := dbconfig.DB.Dialect
-	dbUser := dbconfig.DB.Username
-	dbPass := dbconfig.DB.Password
-	dbName := dbconfig.DB.Name
-	db, err := sql.Open(dbDriver, dbUser+":"+dbPass+"@/"+dbName)
-	if err != nil {
-		panic(err.Error())
-	}
-	return db
 }
 
 //list all the articles

@@ -1,9 +1,19 @@
 {{ define "Form" }}
-{{ template "Header" }}
-<h1>Editing {{ .Title }}</h1>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Go Blog</title>
+  </head>
+  <body>
+    <h2>Editing {{ .Title }}</h1>
     <form action="/edit/{{.ID}}" method="POST">
         <input type="text" name="title" value="{{ .Title }}"  /><br />
         <textarea name="body" rows="20" cols="80">{{printf "%s" .Body}}</textarea><br/>
         <input type="submit" value="Save"/>
      </form>
+</body>
+
+</html>
+
 {{ end }}
